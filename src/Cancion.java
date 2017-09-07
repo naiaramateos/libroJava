@@ -76,18 +76,19 @@ public class Cancion {
 
 		switch (opcionMenu) {
 		case 1:
-			listarCanciones();
+			listarCanciones(listaCanciones);
 			break;
 		}
 
 	}
 
-	public listarCanciones()
+	public static void listarCanciones(ArrayList listaCanciones)
 	{
 		for (int i = 0; i < listaCanciones.size(); i++) {
 			System.out.println("Canción " + i + ": " + listaCanciones.get(i));
 
 		}
+
 		
 		
 	}
