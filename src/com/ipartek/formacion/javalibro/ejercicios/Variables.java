@@ -1,3 +1,4 @@
+package com.ipartek.formacion.javalibro.ejercicios;
 import java.text.NumberFormat;
 
 import javax.swing.text.MaskFormatter;
@@ -79,7 +80,7 @@ public class Variables {
 
 		System.out.println("Germán cobra " + NumberFormat.getInstance().format(sueldoMes) + "€ al mes" + '\n');
 
-		// TODO Declarar una variables primitiva de cada tipo y usar su wrapper
+		
 
 		System.out.println('\t' + "dígito" + '\t' + "letra" + '\t' + "Mayus" + '\t' + "Minus" + '\t');
 		System.out.println(

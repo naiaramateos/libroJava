@@ -1,14 +1,30 @@
+package com.ipartek.formacion.javalibro.ejercicios;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CalcularIva {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+
+		float importe = 0;
+		boolean importeCorrecto = false;
 		System.out.println("Calculadora IVA 21%");
 		System.out.println("----------------------------------------");
 		System.out.println("Por favor dame el importe en €");
 		Scanner sc = new Scanner(System.in);
-		float importe = sc.nextFloat();
+		do {
+			try {
+				importe = sc.nextFloat();
+				importeCorrecto = true;
+			} 
+			catch (InputMismatchException e) {
+				System.out.println("Valor incorrecto, introduce un valor numérico, por ejemplo:  123.33");
+			}
+			catch (Exception e) {
+				System.out.println("Qué has hecho para que falle? "+e.getMessage());
+			}
+		} while (!importeCorrecto);
 
 		System.out.println("IVA REPERCUTIDO :" + importe * 0.21);
 

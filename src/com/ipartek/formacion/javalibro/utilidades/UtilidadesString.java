@@ -1,3 +1,4 @@
+package com.ipartek.formacion.javalibro.utilidades;
 /**
  * Cuenta las palabras contenidas dentro del texto
  * 
@@ -10,7 +11,7 @@
  */
 public class UtilidadesString {
 
-	// TODO Auto-generated method stub
+	
 
 	static int buscarpalabra(String texto, String busqueda) {
 		int resul = -1;

@@ -1,3 +1,5 @@
+package com.ipartek.formacion.javalibro.pojo;
+import com.ipartek.formacion.javalibro.excepciones.ParticipanteException;
 
 public class Participante {
 
@@ -8,24 +10,32 @@ public class Participante {
 	private String usuarioGit;
 	private String email;
 	private boolean trabajador;
+	private int edad;
 
 	public Participante() {
 		super();
-		//TODO implementar
+		
 		this.nombre = "";
 		this.usuarioGit = "";
 		this.email = "";
-		this.trabajador = false;		
+		this.trabajador = false;
+		this.edad = 0;
 	}
 
 	// Constructores
 
+	public Participante(String nombre, int edad) throws ParticipanteException {
+		this();
+		this.nombre = nombre;
+		this.setEdad(edad);
+
+	}
+	
 	public Participante(String nombre, String usuarioGit) {
-		super();
+		this();
 		this.nombre = nombre;
 		this.usuarioGit = usuarioGit;
-		this.email = "";
-		this.trabajador = false;
+		
 
 	}
 
@@ -69,11 +79,25 @@ public class Participante {
 
 	}
 
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) throws ParticipanteException {
+		if (edad < 0) {
+			throw new ParticipanteException(ParticipanteException.EXCEPTION_MENOR_CERO);
+		}
+		
+		if (edad >100) {
+			throw new ParticipanteException(ParticipanteException.EXCEPTION_MAYOR_CIEN);
+		}
+		this.edad = edad;
+	}
+
 	@Override
 	public String toString() {
-		return "Participante [nombre=" + this.nombre + ", usuarioGit=" + this.usuarioGit + ", email=" + this.email + ", trabajador="
-				+ this.trabajador + "]";
+		return "Participante [nombre=" + nombre + ", usuarioGit=" + usuarioGit + ", email=" + email + ", trabajador="
+				+ trabajador + ", edad=" + edad + "]";
 	}
-	
-	
+
 }

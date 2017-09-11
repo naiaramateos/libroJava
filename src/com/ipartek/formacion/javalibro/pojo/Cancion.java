@@ -1,3 +1,4 @@
+package com.ipartek.formacion.javalibro.pojo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class Cancion {
 
 	public Cancion() {
 		super();
-		// TODO implementar
+		
 		this.titulo = "";
 		this.artista = "";
 		this.duracion = "";
@@ -61,7 +62,7 @@ public class Cancion {
 	static int numCancion;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 		crearLista();
 		opcionMenu = mostrarMenu();
@@ -97,14 +98,14 @@ public class Cancion {
 	}
 
 	private static void mostrarDespedida() {
-		// TODO Auto-generated method stub
+		
 		System.out.println("Agur! ");
 		sc.close();
 
 	}
 
 	private static void crearCancion() {
-		// TODO Auto-generated method stub
+		
 		String titulo = "";
 		String artista = "";
 		String duracion = "";
@@ -126,7 +127,7 @@ public class Cancion {
 	}
 
 	private static void mostrarDetalle() {
-		// TODO Auto-generated method stub
+		
 
 		System.out.println("¿De qué canción quieres ver el detalle?: ");
 		sc = new Scanner(System.in);
@@ -137,7 +138,7 @@ public class Cancion {
 	}
 
 	private static void crearLista() {
-		// TODO Auto-generated method stub
+		
 
 		listaCanciones.add(new Cancion("Wonderful World", "Sam Cooke", "2:05"));
 		listaCanciones.add(new Cancion("Ex's & Oh's", "Elle King", "4:05"));
@@ -153,7 +154,7 @@ public class Cancion {
 	}
 
 	private static int mostrarMenu() {
-		// TODO Auto-generated method stub
+		
 		System.out.println("\n\nMENU CANCIONES\n_____________________________\n" + "1. Listar canciones\n"
 				+ "2. Eliminar canciones\n" + "3. Crear canciones\n" + "4. Detalle canciones\n" + "5. Salir");
 

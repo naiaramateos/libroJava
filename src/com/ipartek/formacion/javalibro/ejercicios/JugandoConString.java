@@ -1,5 +1,6 @@
+package com.ipartek.formacion.javalibro.ejercicios;
 
-
+import com.ipartek.formacion.javalibro.utilidades.UtilidadesString;
 
 public class JugandoConString {
 

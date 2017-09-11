@@ -1,10 +1,11 @@
+package com.ipartek.formacion.javalibro.ejercicios;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class AveriguarNumero {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 
 		// int numeroSecreto = 7;
 		int contador = 0;
