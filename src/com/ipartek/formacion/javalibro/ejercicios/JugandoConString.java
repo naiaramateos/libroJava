@@ -74,7 +74,7 @@ public class JugandoConString {
 		System.out.println("Lorem ipsum tiene: " + contadorAT + " AT.");
 		
 		//TEST
-		UtilidadesString.buscarpalabra(lorem, "at");
+		//UtilidadesString.buscarpalabra(lorem, "at");
 
 	}
 
