@@ -5,21 +5,6 @@ import java.util.regex.Pattern;
 
 public class Validaciones {
 
-	/**
-	 * Metodo para validar si un email es correcto
-	 * 
-	 * @param email
-	 *            a validar
-	 * @return true si es valido, false en caso contrario
-	 */
-	public static boolean edad(int edad) {
-		boolean resul = false;
-		if ((edad >= 18) && (edad < 90)) {
-			resul = true;
-		}
-		return resul;
-	}
-
 	public static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
 			Pattern.CASE_INSENSITIVE);
 
@@ -30,93 +15,56 @@ public class Validaciones {
 	 *            a validar
 	 * @return true si es valido, false en caso contrario
 	 */
+
 	public static boolean email(String email) {
 		boolean resul = false;
+
 		if (email != null) {
 			Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(email);
 			resul = matcher.find();
 		}
+
 		return resul;
 	}
 
 	/**
-	 * Metodo para validar un DNI
+	 * 
+	 * Metodo para validar si un dni es correcto
 	 * 
 	 * @see https://medium.com/@manuelmato/c%C3%B3mo-validar-un-dni-en-java-6d7ce7d764aa
+	 * @see https://medium.com/@manuelmato/c%C3%B3mo-validar-un-dni-en-java-parte-ii-f01170487d0b
 	 * @param dni
-	 *            String Documento Identidad Nacional con 8 digitos y letra ( sin
-	 *            espacios, ni guiones)
-	 * @return true si es valido, false en caso contrario
+	 *            a validar
+	 * @returntrue si es valido, false en caso contrario
 	 */
-	static boolean dni(String dni) {
-
+	public static boolean validarDNI(String dni) {
 		boolean resul = false;
+		int i = 0;
+		int caracterASCII = 0;
+		char letra = ' ';
+		int miDNI = 0;
+		int resto = 0;
+		char[] asignacionLetra = { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q',
+				'V', 'H', 'L', 'C', 'K', 'E' };
 
 		if (dni != null) {
+			if (dni.length() == 9 && Character.isLetter(dni.charAt(8))) {
 
-			String letraMayuscula = ""; // Guardaremos la letra introducida en formato mayúscula
-
-			// Aquí excluimos cadenas distintas a 9 caracteres que debe tener un dni y
-			// también si el último caracter no es una letra
-			if (dni.length() != 9 || Character.isLetter(dni.charAt(8)) == false) {
-				return false;
+				do {
+					caracterASCII = dni.codePointAt(i);
+					resul = (caracterASCII > 47 && caracterASCII < 58);
+					i++;
+				} while (i < dni.length() - 1 && resul);
 			}
 
-			// Al superar la primera restricción, la letra la pasamos a mayúscula
-			letraMayuscula = (dni.substring(8)).toUpperCase();
-
-			// Por último validamos que sólo tengo 8 dígitos entre los 8 primeros caracteres
-			// y que la letra introducida es igual a la de la ecuación
-			// Llamamos a los métodos privados de la clase soloNumeros() y letraDNI()
-			if (soloNumeros(dni) == true && letraDNI(dni).equals(letraMayuscula)) {
-				resul = true;
+			if (resul) {
+				letra = Character.toUpperCase(dni.charAt(8));
+				miDNI = Integer.parseInt(dni.substring(0, 8));
+				resto = miDNI % 23;
+				resul = (letra == asignacionLetra[resto]);
 			}
 		}
-
 		return resul;
-	}
-
-	private static boolean soloNumeros(String dni) {
-
-		int i, j = 0;
-		String numero = ""; // Es el número que se comprueba uno a uno por si hay alguna letra entre los 8
-							// primeros dígitos
-		String miDNI = ""; // Guardamos en una cadena los números para después calcular la letra
-		String[] unoNueve = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-
-		for (i = 0; i < dni.length() - 1; i++) {
-			numero = dni.substring(i, i + 1);
-
-			for (j = 0; j < unoNueve.length; j++) {
-				if (numero.equals(unoNueve[j])) {
-					miDNI += unoNueve[j];
-				}
-			}
-		}
-
-		if (miDNI.length() != 8) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-
-	private static String letraDNI(String dni) {
-		// El método es privado porque lo voy a usar internamente en esta clase, no se
-		// necesita fuera de ella
-
-		// pasar miNumero a integer
-		int miDNI = Integer.parseInt(dni.substring(0, 8));
-		int resto = 0;
-		String miLetra = "";
-		String[] asignacionLetra = { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S",
-				"Q", "V", "H", "L", "C", "K", "E" };
-
-		resto = miDNI % 23;
-
-		miLetra = asignacionLetra[resto];
-
-		return miLetra;
 	}
 
 }

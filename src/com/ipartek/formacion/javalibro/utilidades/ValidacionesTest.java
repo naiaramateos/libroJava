@@ -8,42 +8,25 @@ public class ValidacionesTest extends TestCase {
 
 		assertFalse(Validaciones.email(null));
 		assertFalse(Validaciones.email(""));
-		assertFalse(Validaciones.email("auraga.ipartek.com"));
-		assertFalse(Validaciones.email("auraga.ipartek."));
+		assertFalse(Validaciones.email("auragaiparek.com"));
+		assertFalse(Validaciones.email("auraga.iparek."));
 		assertFalse(Validaciones.email("auraga@"));
-		assertFalse(Validaciones.email("auraga@ipartekcom"));
-		assertFalse(Validaciones.email("auraga@ipartekcom.e"));
+		assertFalse(Validaciones.email("auraga@iparekcom"));
+		assertFalse(Validaciones.email("auraga@iparek.e"));
 
-		assertTrue(Validaciones.email("auraga@ipartek.com"));
+		assertTrue(Validaciones.email("auraga@iparek.com"));
 
 	}
-	
-	public void testDNI() {
-		
-		assertFalse(Validaciones.dni(null));
-		assertFalse(Validaciones.dni(""));
-		assertFalse(Validaciones.dni("2eee"));
-		assertFalse(Validaciones.dni("11111111"));
-		assertFalse(Validaciones.dni("1111111Y"));
-		
-		assertFalse("Sin guiones",Validaciones.dni("11111111-H"));
-		assertFalse("Sin espacios en blanco",Validaciones.dni("11111111 H"));
-		
-		assertTrue(Validaciones.dni("11111111H"));
-		
-	}
-	
-public void testEdad() {
-		
-		assertFalse(Validaciones.edad(0));
-		assertFalse(Validaciones.edad(-6));
-		assertFalse(Validaciones.edad(90));
-		
-		assertTrue(Validaciones.edad(18));		
-		assertTrue(Validaciones.edad(89));
-		
-	}
-	
-	
 
+	public void testdni() {
+
+		assertFalse(Validaciones.validarDNI(null));
+		assertFalse(Validaciones.validarDNI(""));
+		assertFalse(Validaciones.validarDNI("2eee"));
+		assertFalse(Validaciones.validarDNI("1111111"));
+		assertFalse(Validaciones.validarDNI("1111111Y"));
+
+		assertTrue(Validaciones.validarDNI("11111111H"));
+
+	}
 }
